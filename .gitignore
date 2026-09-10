@@ -1,0 +1,18 @@
+# Python Virtual Environments
+backend/env/
+backend/venv/
+backend/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node.js
+frontend/node_modules/
+frontend/dist/
+
+# Environment Variables
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db
