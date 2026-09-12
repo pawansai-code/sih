@@ -1,26 +1,46 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { Droplets, Info } from 'lucide-react';
 
 const WaterTankCard = () => {
+  const percentage = 65;
+
   return (
-    <div className="bg-white rounded-2xl border border-border flex flex-col shadow-sm flex-[2] min-h-0 overflow-hidden">
-      <div className="p-3 border-b border-border flex items-center justify-between shrink-0">
-        <h2 className="font-semibold text-[15px] text-text-main">Water Tank Status</h2>
-        <ChevronRight size={16} className="text-gray-400" />
+    <div className="bg-white rounded-2xl border border-gray-100 flex flex-col shadow-[0_2px_10px_rgba(0,0,0,0.02)] h-full overflow-hidden">
+      <div className="p-4 flex items-center justify-between border-b border-gray-50/80 shrink-0">
+        <div className="flex items-center gap-2">
+          <Droplets className="text-blue-500" size={18} />
+          <h2 className="font-semibold text-gray-800 text-sm">Tank Status</h2>
+        </div>
+        <button className="text-gray-400 hover:text-gray-600 transition-colors">
+          <Info size={16} />
+        </button>
       </div>
       
-      <div className="p-3 flex items-center gap-4 flex-1 min-h-0 justify-center">
-        <div className="relative w-12 h-[80%] max-h-16 border-2 border-gray-300 rounded-b-lg border-t-0 flex items-end ml-4 shrink-0">
-          <div className="absolute -top-0.5 left-[-2px] right-[-2px] h-[2px] bg-gray-300"></div>
-          <div className="absolute top-1.5 -right-3 w-3 h-1.5 border-t-2 border-r-2 border-b-2 border-gray-300 rounded-r-sm border-l-0"></div>
-          <div className="w-full bg-cyan-400 rounded-b-sm" style={{ height: '65%' }}></div>
+      <div className="p-5 flex items-center gap-6 flex-1 justify-center min-h-0">
+        {/* Tank Visual (Sleek Pill) */}
+        <div className="relative w-12 h-full max-h-24 bg-gray-100 rounded-full shadow-inner overflow-hidden border border-gray-200/50 shrink-0">
+          <div 
+            className="absolute bottom-0 w-full bg-gradient-to-t from-blue-600 to-cyan-400 rounded-full transition-all duration-1000 ease-in-out"
+            style={{ height: `${percentage}%` }}
+          >
+            {/* Subtle highlight for glass effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent w-1/2"></div>
+          </div>
         </div>
 
-        <div className="flex flex-col shrink-0 justify-center h-full">
-          <div className="text-xl font-bold text-primary-600 leading-tight">65%</div>
-          <div className="text-[11px] text-text-muted">Storage</div>
-          <div className="text-[12px] font-medium text-text-main mt-1 leading-tight">32,500 L / 50,000 L</div>
-          <div className="text-[12px] font-semibold text-primary-600 leading-tight">Good</div>
+        {/* Data */}
+        <div className="flex flex-col justify-center shrink-0">
+          <div className="flex items-baseline gap-1 leading-none">
+            <span className="text-3xl font-bold tracking-tight text-gray-800">{percentage}</span>
+            <span className="text-sm font-medium text-gray-500">%</span>
+          </div>
+          <div className="text-[10px] font-medium text-gray-400 mt-1.5 uppercase tracking-wider">Available</div>
+          <div className="text-[13px] font-medium text-gray-700 mt-2">32,500 L <span className="text-gray-400 font-normal">/ 50k L</span></div>
+          
+          <div className="flex items-center gap-1.5 mt-3">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.4)]"></span>
+            <span className="text-[11px] font-semibold text-emerald-600 tracking-wide uppercase">Optimal</span>
+          </div>
         </div>
       </div>
     </div>
